@@ -6,11 +6,11 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func OnStartingCommand(t *testing.T){
+func OnStartingCommand(t *testing.T) {
 	model := New(nil)
 
 	err := model.IncomingMessage(Message{
-		Text: "/start",
+		Text:   "/start",
 		UserID: 123,
 	})
 

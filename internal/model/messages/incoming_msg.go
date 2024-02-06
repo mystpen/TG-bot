@@ -1,24 +1,24 @@
-package model
+package messages
 
-type MessageSender interface{
+type MessageSender interface {
 	SendMessage(text string, userid int64) error
 }
 
-type Model struct{
+type Model struct {
 	tgClient MessageSender
 }
 
-func New(tgClient MessageSender) *Model{
+func New(tgClient MessageSender) *Model {
 	return &Model{tgClient: tgClient}
 }
 
-type Message struct{
-	Text string
+type Message struct {
+	Text   string
 	UserID int64
 }
 
-func (s *Model) IncomingMessage (msg Message) error{
-	if msg.Text == "/start"{
+func (s *Model) IncomingMessage(msg Message) error {
+	if msg.Text == "/start" {
 		s.tgClient.SendMessage("hello", msg.UserID)
 		return nil
 	}
